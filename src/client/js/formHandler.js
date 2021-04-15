@@ -29,10 +29,9 @@ function retrieveWeather(e){
                 throw new Error("City not found!");
             }
             else{
-                
+                console.log(data.main.temp);
+                document.getElementById('results').innerHTML = `The name of the place is ${data.name}, with the temperature of ${data.main.temp}.`;
             } 
-    }).then(function(data){
-        updateUI(data);
     }).catch(function(error){
         console.log(error);
     });
@@ -42,7 +41,6 @@ const getWeather = async (baseURL, zipCode, apiKey)=>{
     const res = await fetch(baseURL+zipCode+apiKey)
     try{
         const data = await res.json();
-        console.log(data);
         return data;
     } catch(error){
         console.log('error',error);
